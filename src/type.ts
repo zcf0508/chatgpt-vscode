@@ -5,7 +5,18 @@ export type Settings = {
 	pasteOnClick?: boolean
 	keepConversation?: boolean
 	timeoutLength?: number
-	model?: string
+	model?:
+		| "gpt-3.5-turbo"
+		| "gpt-3.5-turbo-1106"
+		| "gpt-3.5-turbo-16k-1106"
+		| "gpt-4"
+		| "gpt-3.5-turbo-16k"
+		| "gpt-4-turbo"
+		| "gpt-4-0613"
+		| "gpt-4-32k"
+		| "gpt-4-32k-0613"
+		| "custom"
+	customModel?: string
 	apiUrl?: string
 	temperature?: number
 	maxTokens?: number

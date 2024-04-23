@@ -2,7 +2,7 @@
   "name": "chatgpt",
   "displayName": "ChatGPT: write and improve code using AI",
   "description": "Use ChatGPT and GPT4 right inside the IDE to enhance and automate your coding with AI-powered assistance (unofficial)",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "publisher": "timkmecl",
   "icon": "resources/extensionIcon.png",
   "license": "MIT",
@@ -175,55 +175,63 @@
             "gpt-3.5-turbo-16k",
             "gpt-3.5-turbo-16k-1106",
             "gpt-4",
+            "gpt-4-turbo",
             "gpt-4-0613",
             "gpt-4-32k",
-            "gpt-4-32k-0613"
+            "gpt-4-32k-0613",
+            "custom"
           ],
-          "default": "gpt-3.5-turbo-1106",
-          "description": "Which GPT model to use",
-          "order": 1
+          "default": "gpt-4-turbo",
+          "description": "Which GPT model to use, if you want to use a custom model, you need to set `custom` as the model",
+          "order": 2
+        },
+        "chatgpt.customModel": {
+          "type": "string",
+          "default": "",
+          "description": "Input your custom model here",
+          "order": 3
         },
         "chatgpt.temperature": {
           "type": "number",
           "default": 0.9,
           "description": "What sampling temperature to use, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.",
-          "order": 1
+          "order": 4
         },
         "chatgpt.maxTokens": {
           "type": "number",
           "default": 1000,
           "description": "The maximum number of tokens allowed for the generated answer.",
-          "order": 1
+          "order": 4
         },
         "chatgpt.pasteOnClick": {
           "type": "boolean",
           "default": true,
           "description": "Paste the code from a codeblock inside the response into the editor when you click on it",
-          "order": 2
+          "order": 5
         },
         "chatgpt.promptPrefix.explain": {
           "type": "string",
           "default": "Explain what this code does: ",
           "description": "The prompt prefix used for explaining the selected code",
-          "order": 3
+          "order": 6
         },
         "chatgpt.promptPrefix.refactor": {
           "type": "string",
           "default": "Refactor this code and explain what's changed: ",
           "description": "The prompt prefix used for refactoring the selected code",
-          "order": 4
+          "order": 6
         },
         "chatgpt.promptPrefix.findProblems": {
           "type": "string",
           "default": "Find problems with the following code, fix them and explain what was wrong (Do not change anything else, if there are no problems say so): ",
           "description": "The prompt prefix used for finding problems in the selected code",
-          "order": 5
+          "order": 6
         },
         "chatgpt.promptPrefix.documentation": {
           "type": "string",
           "default": "Write documentation for the following code: ",
           "description": "The prompt prefix used for writing documentation for the selected code",
-          "order": 7
+          "order": 6
         },
         "chatgpt.promptPrefix.optimize": {
           "type": "string",
@@ -235,25 +243,25 @@
           "type": "boolean",
           "default": true,
           "description": "Keep the conversation going by using the same conversation ID for all requests (allows follow-up questions)",
-          "order": 8
+          "order": 7
         },
         "chatgpt.timeoutLength": {
           "type": "number",
           "default": 120,
           "description": "How long should the request wait for a response before timing out (in seconds)",
-          "order": 9
+          "order": 8
         },
         "chatgpt.selectedInsideCodeblock": {
           "type": "boolean",
           "default": true,
           "description": "Append selected code as a codeblock (```...code...```) instead of plain text",
-          "order": 10
+          "order": 9
         },
         "chatgpt.codeblockWithLanguageId": {
           "type": "boolean",
           "default": true,
           "description": "Append language id of the selected code to the codeblock (```language...code...```)",
-          "order": 11
+          "order": 10
         },
         "chatgpt.chromiumExecutablePath": {
           "type": "string",

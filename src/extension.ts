@@ -22,7 +22,8 @@ export function activate(context: vscode.ExtensionContext) {
 		keepConversation: config.get('keepConversation') || false,
 		timeoutLength: config.get('timeoutLength') || 60,
 		apiUrl: config.get('apiUrl') || BASE_URL,
-		model: config.get('model') || 'gpt-3.5-turbo',
+		model: config.get('model') || 'gpt-4-turbo',
+		customModel: config.get('customModel') || '',
 		temperature: config.get('temperature') || 0.9,
 		maxTokens: config.get('maxTokens') || 2048
 	});
@@ -72,6 +73,9 @@ export function activate(context: vscode.ExtensionContext) {
 		} else if (event.affectsConfiguration('chatgpt.model')) {
 			const config = vscode.workspace.getConfiguration('chatgpt');
 			provider.setSettings({ model: config.get('model') || 'gpt-3.5-turbo' }); 
+		} else if (event.affectsConfiguration('chatgpt.customModel')) {
+			const config = vscode.workspace.getConfiguration('customModel');
+			provider.setSettings({ customModel: config.get('customModel') || '' }); 
 		} else if (event.affectsConfiguration('chatgpt.selectedInsideCodeblock')) {
 			const config = vscode.workspace.getConfiguration('chatgpt');
 			provider.setSettings({ selectedInsideCodeblock: config.get('selectedInsideCodeblock') || false });

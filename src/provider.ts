@@ -51,7 +51,8 @@ export class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 		keepConversation: true,
 		timeoutLength: 60,
 		apiUrl: BASE_URL,
-		model: 'gpt-3.5-turbo',
+		model: 'gpt-4-turbo',
+		customModel: '',
 		temperature: 0.9,
 		maxTokens: 2048,
 	};
@@ -98,7 +99,11 @@ export class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 				maxModelTokens: maxModelTokens,
 				maxResponseTokens: this._settings.maxTokens || 1000,
 				completionParams: { 
-					model: this._settings.model || "gpt-3.5-turbo",
+					model: (
+						this._settings.model === 'custom' 
+							? this._settings.customModel 
+							: this._settings.model
+						) || "gpt-3.5-turbo",
 					temperature: this._settings.temperature || 0.9,
 				},
 			});
