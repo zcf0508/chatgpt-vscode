@@ -17,6 +17,7 @@ export type Settings = {
 		| "gpt-4-32k-0613"
 		| "custom"
 	customModel?: string
+	responseLanguage?: string
 	apiUrl?: string
 	temperature?: number
 	maxTokens?: number

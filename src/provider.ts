@@ -68,6 +68,7 @@ export class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 		apiUrl: BASE_URL,
 		model: 'gpt-4-turbo',
 		customModel: '',
+		responseLanguage: 'English',
 		temperature: 0.9,
 		maxTokens: 2048,
 	};
@@ -269,8 +270,13 @@ export class ChatGPTViewProvider implements vscode.WebviewViewProvider {
 			const agent = this._chatGPTAPI;
 
 			try {
-				this._prompt = `${this._conversation?.parentMessageId?'':PROPMT_PREFIX}${this._prompt}`;
+				let prefix = this._conversation?.parentMessageId ? '' : PROPMT_PREFIX;
+				if (prefix && this._settings.responseLanguage && this._settings.responseLanguage.trim() !== 'English') {
+					prefix = `${prefix}\n\n[NOTE:] Answer in ${this._settings.responseLanguage.trim()}, do not answer in English. \n\n`;	
+				}
+				this._prompt = `${prefix}${this._prompt}`;
 				console.log({
+					parentMessageId:this._conversation?.parentMessageId,
 					prompt: this._prompt,
 				});
 				// Send the search prompt to the ChatGPTAPI instance and store the response

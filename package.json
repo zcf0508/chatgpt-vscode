@@ -203,6 +203,12 @@
           "description": "The maximum number of tokens allowed for the generated answer.",
           "order": 4
         },
+        "chatgpt.responseLanguage": {
+          "type": "string",
+          "default": "English",
+          "description": "The language of the response, this will inject the language code in the prompt",
+          "order": 4
+        },
         "chatgpt.pasteOnClick": {
           "type": "boolean",
           "default": true,
